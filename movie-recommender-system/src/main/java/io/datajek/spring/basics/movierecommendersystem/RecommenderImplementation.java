@@ -11,13 +11,13 @@ public class RecommenderImplementation {
 	// component.
 
 	@Autowired
-	private Filter filter;
+	private Filter contentBasedFilter;
 
 	public String[] recommendMovies(String movie) {
-		System.out.println("Current filter being used: [ " + filter + " ]");
+		System.out.println("Current filter being used: [ " + contentBasedFilter + " ]");
 
 		// Calls the filter based the parameter passed down from the main app
-		String[] results = filter.getRecommendations("n/a");
+		String[] results = contentBasedFilter.getRecommendations("n/a");
 
 		return results;
 	}
