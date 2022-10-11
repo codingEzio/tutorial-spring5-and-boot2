@@ -1,23 +1,20 @@
 package io.datajek.spring.basics.movierecommendersystem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RecommenderImplementation {
 
-	// Marking classes with @Component lets Spring manage those objects, and
-	// @Autowired marks the object being annotated is a dependency of the
-	// component.
-
 	@Autowired
-	private Filter contentBasedFilter;
+	@Qualifier("CF")
+	private Filter filter;
 
 	public String[] recommendMovies(String movie) {
-		System.out.println("Current filter being used: [ " + contentBasedFilter + " ]");
+		System.out.println("Current filter being used: [ " + filter + " ]");
 
-		// Calls the filter based the parameter passed down from the main app
-		String[] results = contentBasedFilter.getRecommendations("n/a");
+		String[] results = filter.getRecommendations("n/a");
 
 		return results;
 	}
