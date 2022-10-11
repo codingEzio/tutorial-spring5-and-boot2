@@ -9,6 +9,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 public class CollaborativeFilter implements Filter {
     public CollaborativeFilter() {
         super();
+
+        System.out.println("[CF]  Prototype initialized");
     }
 
     public String[] getRecommendations(String movie) {

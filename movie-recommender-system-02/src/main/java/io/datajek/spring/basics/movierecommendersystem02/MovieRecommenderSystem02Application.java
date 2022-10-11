@@ -12,19 +12,22 @@ public class MovieRecommenderSystem02Application {
 				MovieRecommenderSystem02Application.class,
 				args);
 
-		// Default scope is Singleton (always the same object)
-		ContentBasedFilter cbf1 = appContext.getBean(ContentBasedFilter.class);
-		ContentBasedFilter cbf2 = appContext.getBean(ContentBasedFilter.class);
+		// Singleton bean is created even when you don't use it
+		// Prototype bean would only be created when you req it
 
-		// Prototype (every time a new object being returned)
-		CollaborativeFilter cf1 = appContext.getBean(CollaborativeFilter.class);
-		CollaborativeFilter cf2 = appContext.getBean(CollaborativeFilter.class);
+		// // Default scope is Singleton (always the same object)
+		// ContentBasedFilter cbf1 = appContext.getBean(ContentBasedFilter.class);
+		// ContentBasedFilter cbf2 = appContext.getBean(ContentBasedFilter.class);
 
-		System.out.println("[CBF] " + cbf1);
-		System.out.println("[CBF] " + cbf2);
+		// // Prototype (every time a new object being returned)
+		// CollaborativeFilter cf1 = appContext.getBean(CollaborativeFilter.class);
+		// CollaborativeFilter cf2 = appContext.getBean(CollaborativeFilter.class);
 
-		System.out.println("[CF]  " + cf1);
-		System.out.println("[CF]  " + cf2);
+		// System.out.println("[CBF] " + cbf1);
+		// System.out.println("[CBF] " + cbf2);
+
+		// System.out.println("[CF] " + cf1);
+		// System.out.println("[CF] " + cf2);
 	}
 
 }

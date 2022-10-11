@@ -8,6 +8,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 public class ContentBasedFilter implements Filter {
     public ContentBasedFilter() {
         super();
+
+        System.out.println("[CBF] Singleton initialized");
     }
 
     public String[] getRecommendations(String movie) {
