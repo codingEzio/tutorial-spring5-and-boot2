@@ -33,8 +33,11 @@ public class MovieRecommenderSystem03Application {
 
 		System.out.println();
 
-		// They shall equal to each other, as the Prototype
-		// dependency would lost its prototype behavior.
+		// They shall equal to each other by the default configuration,
+		// as the Prototype dependency would lost its prototype behavior.
+		// But if we set its `ProxyMode` to `ScopedProxyMode.TARGET_CLASS`,
+		// it would indeed create a fresh object and being injected into
+		// the Singleton bean.
 		System.out.println("[IST] Prototype by itself      " + ContentBasedFilter.getInstances());
 		System.out.println("[IST] Prototype with singleton " + Movie.getInstances());
 	}
