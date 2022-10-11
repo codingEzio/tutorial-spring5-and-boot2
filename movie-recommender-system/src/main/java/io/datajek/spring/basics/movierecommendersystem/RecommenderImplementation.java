@@ -10,11 +10,11 @@ public class RecommenderImplementation {
 	private Filter filter;
 
 	@Autowired
-	public RecommenderImplementation(@Qualifier("collaborativeFilter") Filter filter) {
-		super();
-
+	@Qualifier("collaborativeFilter")
+	public void setFilter(Filter filter) {
 		this.filter = filter;
-		System.out.println("[INFO] Constructor invoked.");
+
+		System.out.println("[INFO] Setter invoked.");
 	}
 
 	public String[] recommendMovies(String movie) {
