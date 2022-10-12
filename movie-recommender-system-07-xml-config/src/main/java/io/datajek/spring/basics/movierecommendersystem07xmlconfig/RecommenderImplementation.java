@@ -4,11 +4,7 @@ public class RecommenderImplementation {
 
 	private Filter filter;
 
-	public Filter getFilter() {
-		return filter;
-	}
-
-	public void setFilter(Filter filter) {
+	public RecommenderImplementation(Filter filter) {
 		this.filter = filter;
 	}
 

@@ -1,11 +1,8 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
-
     <bean id="contentBasedFilter" class="io.datajek.spring.basics.movierecommendersystem07xmlconfig.ContentBasedFilter"></bean>
-<bean id="collaborativeFilter" class="io.datajek.spring.basics.movierecommendersystem07xmlconfig.CollaborativeFilter">
-</bean>
-<bean id="recommenderImplementation" class="io.datajek.spring.basics.movierecommendersystem07xmlconfig.RecommenderImplementation">
-    <property name="filter" ref="collaborativeFilter" />
-</bean>
+    <bean id="collaborativeFilter" class="io.datajek.spring.basics.movierecommendersystem07xmlconfig.CollaborativeFilter"></bean>
+    <bean id="recommenderImplementation" class="io.datajek.spring.basics.movierecommendersystem07xmlconfig.RecommenderImplementation">
+        <constructor-arg ref="collaborativeFilter" />
+    </bean>
 </beans>
