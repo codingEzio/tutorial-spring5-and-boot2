@@ -1,13 +1,23 @@
 package io.datajek.spring.basics.movierecommendersystem08xmlwithanno;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.util.Arrays;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@SpringBootApplication
 public class MovieRecommenderSystem08XmlwithannoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MovieRecommenderSystem08XmlwithannoApplication.class, args);
+		ClassPathXmlApplicationContext appContext = new ClassPathXmlApplicationContext(
+				"appContext.xml");
+
+		System.out.println("\nBeans loaded:");
+		System.out.println(Arrays.toString(appContext.getBeanDefinitionNames()));
+
+		RecommenderImplementation recommender = appContext.getBean("recommenderImpl", RecommenderImplementation.class);
+
+		System.out.println("\nDependency: " + recommender.getFilter());
+		System.out.println();
+
+		appContext.close();
 	}
 
 }
