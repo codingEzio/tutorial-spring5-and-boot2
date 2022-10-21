@@ -42,6 +42,15 @@ public class MovieRecommenderSystem11JdbcApplication implements CommandLineRunne
 						"Austria",
 						new Date(System.currentTimeMillis()),
 						17)));
+		logger.info(
+				"Update Player 4: {}",
+				playerDao.updatePlayer(new Player(
+						4,
+						"God of Thunder",
+						"Australia",
+						Date.valueOf("1972-11-23"),
+						39)));
+
 		logger.info("All Players Data: {}", playerDao.getPlayer(4));
 		logger.info("All Players Data: {}", playerDao.getAllPlayers());
 	}
