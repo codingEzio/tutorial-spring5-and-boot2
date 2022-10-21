@@ -51,7 +51,11 @@ public class MovieRecommenderSystem11JdbcApplication implements CommandLineRunne
 						Date.valueOf("1972-11-23"),
 						39)));
 
-		logger.info("All Players Data: {}", playerDao.getPlayer(4));
+		logger.info(
+				"Delete Player 4: {}",
+				playerDao.deletePlayerById(4));
+
+		logger.info("All Players Data: {}", playerDao.getPlayer(3));
 		logger.info("All Players Data: {}", playerDao.getAllPlayers());
 	}
 }
