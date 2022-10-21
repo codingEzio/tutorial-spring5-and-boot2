@@ -1,5 +1,7 @@
 package io.datajek.spring.basics.movierecommendersystem11jdbc;
 
+import java.sql.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +34,15 @@ public class MovieRecommenderSystem11JdbcApplication implements CommandLineRunne
 
 	@Override
 	public void run(String... args) throws Exception {
+		logger.info(
+				"Insert Player 4: {}",
+				playerDao.insertPlayer(new Player(
+						4,
+						"Thor",
+						"Austria",
+						new Date(System.currentTimeMillis()),
+						17)));
+		logger.info("All Players Data: {}", playerDao.getPlayer(4));
 		logger.info("All Players Data: {}", playerDao.getAllPlayers());
-		logger.info("All Players Data: {}", playerDao.getPlayer(1));
 	}
 }
