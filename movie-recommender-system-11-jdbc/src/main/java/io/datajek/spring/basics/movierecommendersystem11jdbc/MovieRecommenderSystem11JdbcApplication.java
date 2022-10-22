@@ -55,7 +55,9 @@ public class MovieRecommenderSystem11JdbcApplication implements CommandLineRunne
 				"Delete Player 4: {}",
 				playerDao.deletePlayerById(4));
 
-		logger.info("All Players Data: {}", playerDao.getPlayer(3));
+		logger.info("Get Player by ID: {}", playerDao.getPlayer(3));
+		logger.info("Get Player by Country: {}", playerDao.getPlayerByNationality("Scotland"));
+
 		logger.info("All Players Data: {}", playerDao.getAllPlayers());
 	}
 }
