@@ -47,5 +47,8 @@ public class DatabaseExample02JpaApplication implements CommandLineRunner {
 		playerRepository.deleteById(2);
 
 		playerRepository.getPlayerById(1);
+		playerRepository.getPlayerByTitles(81);
+
+		playerRepository.getAllPlayers();
 	}
 }

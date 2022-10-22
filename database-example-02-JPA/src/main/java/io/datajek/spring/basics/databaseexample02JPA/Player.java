@@ -4,11 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.sql.Date;
 
 @Entity
 @Table(name = "Player")
+@NamedQuery(name = "get_all_players", query = "SELECT p FROM Player AS p")
+@NamedQuery(name = "get_player_by_titles", query = "SELECT p FROM Player AS p WHERE titles = :titles")
 public class Player {
 	@Id
 	@GeneratedValue
