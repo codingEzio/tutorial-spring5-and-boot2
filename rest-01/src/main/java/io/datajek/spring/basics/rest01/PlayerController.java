@@ -49,4 +49,9 @@ public class PlayerController {
     public Player partialUpdate(@PathVariable int id, @RequestBody Map<String, Object> playerPatch) {
         return playerService.patch(id, playerPatch);
     }
+
+    @PatchMapping("/players/{id}/titles")
+    public void updateTitles(@PathVariable int id, @RequestBody int titles) {
+        playerService.updateTitles(id, titles);
+    }
 }

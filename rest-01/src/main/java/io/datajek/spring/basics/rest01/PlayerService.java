@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
 
 @Service
@@ -58,5 +59,10 @@ public class PlayerService {
         }
 
         return playerRepository.save(player.get());
+    }
+
+    @Transactional
+    public void updateTitles(int id, int titles) {
+        playerRepository.updateTitles(id, titles);
     }
 }
