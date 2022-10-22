@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ReflectionUtils;
 
+import io.datajek.spring.basics.rest01.exceptions.PlayerNotFoundException;
+
 @Service
 public class PlayerService {
 
@@ -22,13 +24,12 @@ public class PlayerService {
 
     public Player getPlayer(int id) {
         Optional<Player> player = playerRepository.findById(id);
-        Player p = null;
 
-        if (player.isPresent()) {
-            p = player.get();
+        if (player.isEmpty()) {
+            throw new PlayerNotFoundException("Player with id " + id + " does not exist!");
         }
 
-        return p;
+        return player.get();
     }
 
     public Player addPlayer(Player player) {
