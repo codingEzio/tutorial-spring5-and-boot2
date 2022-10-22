@@ -26,4 +26,19 @@ public class PlayerService {
 
         return p;
     }
+
+    public Player addPlayer(Player player) {
+        return playerRepository.save(player);
+    }
+
+    public Player updatePlayer(int id, Player newPlayer) {
+        Player player = playerRepository.getById(id);
+
+        player.setName(newPlayer.getName());
+        player.setNationality(newPlayer.getNationality());
+        player.setBirthDate(newPlayer.getBirthDate());
+        player.setTitles(newPlayer.getTitles());
+
+        return playerRepository.save(player);
+    }
 }
