@@ -23,21 +23,29 @@ public class DatabaseExample02JpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// insert players
-		logger.info("\n\n>> (👆 上为SQL) Inserting Player: {}\n", playerRepository.insertPlayer(
-				new Player("Djokovic", "Serbia", Date.valueOf("1987-05-22"), 81)));
-		logger.info("\n\n>> (👆 上为SQL) Inserting Player: {}\n", playerRepository.insertPlayer(
-				new Player("Thiem", "Austria",
-						new Date(System.currentTimeMillis()), 17)));
+		playerRepository.insertPlayer(new Player(
+				"Djokovic",
+				"Serbia",
+				Date.valueOf("1987-05-22"),
+				81
+		));
+		playerRepository.insertPlayer(new Player(
+				"Thiem",
+				"Austria",
+				new Date(System.currentTimeMillis()),
+				17
+		));
 
-		// update player
-		logger.info("\n\n>> (👆 上为SQL) Updating Player with Id 2: {}\n", playerRepository.updatePlayer(
-				new Player(2, "Thiem", "Austria", Date.valueOf("1993-09-03"), 17)));
+		playerRepository.updatePlayer(new Player(
+				2,
+				"Thiem",
+				"Austria",
+				Date.valueOf("1993-09-03"),
+				17
+		));
 
-		// delete player
 		playerRepository.deleteById(2);
 
-		// get player
-		logger.info("\n\n>> (👆 上为SQL) Player with id 1: {}\n", playerRepository.getPlayerById(1));
+		playerRepository.getPlayerById(1);
 	}
 }
