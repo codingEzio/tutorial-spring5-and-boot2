@@ -51,6 +51,12 @@ public class PlayerController {
         return playerService.patch(id, playerPatch);
     }
 
+    // Beware of the last line (it's an Integer)
+    //  Some API testing software would add an extra pair of double quotes,
+    //  which would turn the data into a String, then errors would be raised
+    // curl -X "PATCH" "http://localhost:8080/players/1/titles" \
+    //         -H 'Content-Type: text/plain; charset=utf-8' \
+    //         -d 108
     @PatchMapping("/players/{id}/titles")
     public void updateTitles(@PathVariable int id, @RequestBody int titles) {
         playerService.updateTitles(id, titles);
