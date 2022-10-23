@@ -37,26 +37,30 @@ public class PlayerService {
     }
 
     public Player updatePlayer(int id, Player newPlayer) {
-        Player player = playerRepository.getById(id);
+        Optional<Player> player = playerRepository.findById(id);
 
-        player.setName(newPlayer.getName());
-        player.setNationality(newPlayer.getNationality());
-        player.setBirthDate(newPlayer.getBirthDate());
-        player.setTitles(newPlayer.getTitles());
+        if (player.isEmpty()) {
+            throw new PlayerNotFoundException("Player with id " + id + " does not exist for updating!");
+        }
 
-        return playerRepository.save(player);
+        newPlayer.setId(id);
+        return playerRepository.save(newPlayer);
     }
 
-    public Player patch(int id, Map<String, Object> playerPatch) {
+    public Player patch(int id, Map<String, Object> partialPlayer) {
         Optional<Player> player = playerRepository.findById(id);
 
         if (player.isPresent()) {
-            playerPatch.forEach((key, value) -> {
+            partialPlayer.forEach((key, value) -> {
+                System.out.println("[KEY] " + key + " [VALUE]: " + value);
+
                 Field field = ReflectionUtils.findField(Player.class, key);
 
                 ReflectionUtils.makeAccessible(field);
                 ReflectionUtils.setField(field, player.get(), value);
             });
+        } else {
+            throw new PlayerNotFoundException("Player with id " + id + " does not exist for patching!");
         }
 
         return playerRepository.save(player.get());
@@ -64,16 +68,22 @@ public class PlayerService {
 
     @Transactional
     public void updateTitles(int id, int titles) {
+        Optional<Player> player = playerRepository.findById(id);
+
+        if (player.isEmpty()) {
+            throw new PlayerNotFoundException("Player with id " + id + " does not exist for updating titles!");
+        }
+
         playerRepository.updateTitles(id, titles);
     }
 
-    public String deletePlayer(int id) {
-        try {
-            playerRepository.deleteById(id);
-        } catch (Exception e) {
-            return "Player with id " + id + " not found";
+    public void deletePlayer(int id) {
+        Optional<Player> player = playerRepository.findById(id);
+
+        if (player.isEmpty()) {
+            throw new PlayerNotFoundException("Player with id " + id + " does not exist for deletion!");
         }
 
-        return "Deleted player with id: " + id;
+        playerRepository.delete(player.get());
     }
 }
