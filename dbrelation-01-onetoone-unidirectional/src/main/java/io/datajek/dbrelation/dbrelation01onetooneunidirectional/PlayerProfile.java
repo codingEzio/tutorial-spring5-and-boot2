@@ -9,7 +9,7 @@ import javax.persistence.Id;
 public class PlayerProfile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String twitter;
 
@@ -18,16 +18,16 @@ public class PlayerProfile {
 	}
 
 	public PlayerProfile (int id, String twitter) {
-		this.Id = id;
+		this.id = id;
 		this.twitter = twitter;
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getTwitter() {
@@ -36,5 +36,10 @@ public class PlayerProfile {
 
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
+	}
+
+	@Override
+	public String toString() {
+		return "PlayerDetail [id=" + id + ", twitter=" + twitter + "]";
 	}
 }

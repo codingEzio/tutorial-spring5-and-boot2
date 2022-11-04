@@ -1,33 +1,49 @@
 package io.datajek.dbrelation.dbrelation01onetooneunidirectional;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Player {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private int id;
 
 	private String name;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "profile_id", referencedColumnName = "id")
+	private PlayerProfile playerProfile;
 
 	public Player () {
 
 	}
 
-	public Player (int id, String name) {
-		this.Id = id;
+	public Player(String name) {
+		super();
+
 		this.name = name;
 	}
 
+	public Player (String name, PlayerProfile playerProfile) {
+		super();
+
+		this.name = name;
+		this.playerProfile = playerProfile;
+	}
+
+
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		id = id;
 	}
 
 	public String getName() {
@@ -36,5 +52,18 @@ public class Player {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public PlayerProfile getPlayerProfile() {
+		return playerProfile;
+	}
+
+	public void setPlayerProfile(PlayerProfile playerProfile) {
+		this.playerProfile = playerProfile;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [ie=" + id + ", name=" + name + ", playerProfile=" + playerProfile + "]";
 	}
 }
