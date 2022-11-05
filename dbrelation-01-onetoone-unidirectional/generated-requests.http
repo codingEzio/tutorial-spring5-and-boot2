@@ -1,0 +1,61 @@
+### New Player #1
+POST http://localhost:8080/players
+Content-Type: application/json
+
+{
+  "name": "Coulson"
+}
+
+<> 2022-11-05T083526.200.json
+
+### New Player #2
+POST http://localhost:8080/players
+Content-Type: application/json
+
+{
+  "name": "Philip"
+}
+
+<> 2022-11-05T083526-1.200.json
+
+### New Profile #1
+POST http://localhost:8080/profiles
+Content-Type: application/json
+
+{
+  "twitter": "@j_coulson"
+}
+
+<> 2022-11-05T083526-2.200.json
+
+### New Profile #2
+POST http://localhost:8080/profiles
+Content-Type: application/json
+
+{
+  "twitter": "@phillip"
+}
+
+<> 2022-11-05T083526-3.200.json
+
+### Delete Player 2
+DELETE http://localhost:8080/players/2
+
+### Delete Profile 2
+DELETE http://localhost:8080/profiles/2
+
+### Link Profile 1 to Player 1
+PUT http://localhost:8080/players/1/profiles/1
+Content-Type: application/json
+
+<> 2022-11-05T083526-4.200.json
+
+### All Players
+GET http://localhost:8080/players
+
+<> 2022-11-05T083526-5.200.json
+
+### All Profiles
+GET http://localhost:8080/profiles
+
+<> 2022-11-05T083526-6.200.json
